@@ -19,18 +19,53 @@ export TF_VAR_aws_secret_key="<your_aws_secret_key>"
 export TF_VAR_region_id="<your_aws_region>"
 ```
 
+## The following steps are valid for MacOS users
+
+ * Install and fine tune rbenv
+ 
+```
+brew install rbenv
+
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+
+source ~/.bash_profile
+
+rbenv init
+```
+ * Install ruby version 2.3.1 with rbenv
+
+```
+rbenv install 2.3.1
+
+rbenv local 2.3.1
+
+```
+
+ * Install bundler
+ 
+ ```
+ gem install bundler
+ ```
+ * Run the following command: 
+ 
+ ```
+ # This will install all gems described in the Gemfile
+ 
+ bundle install
+ ```
+
 ## How to test: 
 
 1. Clone this repo: 
 
 ```
-git clone 
+git clone https://github.com/firedot/terraform_aws_kitchen_test.git
 ```
 
 2. Go in the cloned repo dir: 
 
 ```
-cd 
+cd terraform_aws_kitchen_test
 ```
 
 3. Run the following command: 
