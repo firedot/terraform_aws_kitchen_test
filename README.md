@@ -20,22 +20,22 @@ export TF_VAR_region_id="<your_aws_region>"
 ```
 
 ## The following steps are valid for MacOS users
-
- * Install and fine tune rbenv
  
+ * Install and fine tune rbenv by running the following commands
+   
 ```
-brew install rbenv
+which rbenv || brew install rbenv
 
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+export | grep $HOME/.rbenv || echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile 
 
 source ~/.bash_profile
 
 rbenv init
 ```
- * Install ruby version 2.3.1 with rbenv
+ * Install ruby version 2.3.1 with rbenv by running the following commands
 
 ```
-rbenv install 2.3.1
+rbenv versions | grep 2.3.1 || rbenv install 2.3.1
 
 rbenv local 2.3.1
 
