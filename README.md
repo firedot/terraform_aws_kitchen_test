@@ -26,7 +26,9 @@ export TF_VAR_region_id="<your_aws_region>"
 ```
 which rbenv || brew install rbenv
 
-grep ".rbenv" ~/.bash_profile || echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile 
+grep ".rbenv" ~/.bash_profile || {
+  echo 'export PATH="$HOME/.rbenv/bin:$PATH"' | tee -a ~/.bash_profile
+}
 
 source ~/.bash_profile
 
