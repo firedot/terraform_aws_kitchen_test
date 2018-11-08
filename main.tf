@@ -3,11 +3,16 @@ variable "aws_secret_key" {}
 variable "aws_access_key" {}
 variable "region_id" {}
 
+variable "vpc_security_group_id" {
+  type = "list"
+}
+
 resource "aws_instance" "web01" {
-  ami             = "${var.ami_id}"
-  instance_type   = "t2.micro"
-  security_groups = ["test-sec-group"]
-  key_name        = "hive"
+  ami                     = "${var.ami_id}"
+  instance_type           = "t2.micro"
+  security_groups         = ["test-sec-group"]
+  key_name                = "hive"
+  vpc_security_groups_ids = "${var.vpc_security_group_ids}"
 
   tags = {
     Name = "web01"
@@ -26,7 +31,7 @@ resource "aws_instance" "web01" {
 }
 
 provider "aws" {
-  region = "${var.region_id}"
+  region     = "${var.region_id}"
   access_key = "${var.aws_access_key}"
   secret_key = "${var.aws_secret_key}"
 }
