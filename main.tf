@@ -7,7 +7,7 @@ resource "aws_instance" "web01" {
   ami             = "${var.ami_id}"
   instance_type   = "t2.micro"
   security_groups = ["test-sec-group"]
-  key_name        = "mac2"
+  key_name        = "hive"
 
   tags = {
     Name = "web01"
@@ -20,13 +20,15 @@ resource "aws_instance" "web01" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = "${file("./priv/mac2")}"
+      private_key = "${file("./priv/id_rsa_aws")}"
     }
   }
 }
 
 provider "aws" {
   region = "${var.region_id}"
+  access_key = "${var.aws_secret_key}"
+  secret_key = "${var.aws_secret_key}"
 }
 
 output "public_ip" {
